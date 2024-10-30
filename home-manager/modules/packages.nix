@@ -1,6 +1,5 @@
 { self, pkgs, audi, ... }:
 let
-  nonWorkPackages = if !audi.work then with pkgs; [ jq yarn nodejs corepack_22 texliveFull ] else [ ];
   packages = with pkgs;
     [
       black
@@ -14,6 +13,8 @@ let
       luarocks
       ncurses
       neofetch
+      jq
+      nodejs
       nix-prefetch-github
       nixfmt-classic
       ripgrep
@@ -22,5 +23,5 @@ let
       tldr
       unzip
       zoxide
-    ] ++ nonWorkPackages;
+    ];
 in { home = { inherit packages; }; }
