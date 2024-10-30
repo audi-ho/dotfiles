@@ -10,6 +10,6 @@ in mapAttrs (_: host:
     pkgs = import nixpkgs { inherit (host) system; };
   in home-manager.lib.homeManagerConfiguration {
     inherit pkgs;
-    extraSpecialArgs = inputs // { inherit (host.config) ben; };
+    extraSpecialArgs = inputs // { inherit (host.config) audi; };
     modules = [ ../modules/default.nix ];
   })) hosts

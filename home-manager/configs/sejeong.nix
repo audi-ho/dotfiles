@@ -1,8 +1,8 @@
 {
   system = "aarch64-darwin";
-  config.ben = {
-    username = "ben.soh";
-    homeDirectory = "/Users/ben.soh";
+  config.audi = {
+    username = "audi";
+    homeDirectory = "/Users/audi";
     work = true;
   };
 }

@@ -1,6 +1,6 @@
-{ self, pkgs, ben, ... }:
+{ self, pkgs, audi, ... }:
 let
-  nonWorkPackages = if !ben.work then with pkgs; [ jq yarn nodejs corepack_22 texliveFull ] else [ ];
+  nonWorkPackages = if !audi.work then with pkgs; [ jq yarn nodejs corepack_22 texliveFull ] else [ ];
   packages = with pkgs;
     [
       black

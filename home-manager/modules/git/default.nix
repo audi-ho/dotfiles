@@ -83,8 +83,8 @@
     };
     git = {
       enable = true;
-      userName = "Ben Soh";
-      userEmail = "ben.soh@discordapp.com";
+      userName = "Audi Ho";
+      userEmail = "audi.ho@pilot.com";
       includes = [{ path = "~/.config/git/themes.gitconfig"; }];
       extraConfig = {
         pull.rebase = true;

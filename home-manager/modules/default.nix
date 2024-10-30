@@ -1,7 +1,7 @@
-{ config, pkgs, lib, ben, ... }:
+{ config, pkgs, lib, audi, ... }:
 let
   inherit (lib) mkOption types;
-  inherit (ben) username homeDirectory;
+  inherit (audi) username homeDirectory;
 in {
   imports = [
     ./darwin
