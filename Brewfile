@@ -7,7 +7,6 @@ brew "felixkratz/formulae/sketchybar"
 cask "aerospace"
 cask "font-fira-code-nerd-font"  # vim
 cask "font-jetbrains-mono-nerd-font"  # sketchybar
-cask "kitty"
 cask "raycast"
 cask "sf-symbols"  # sketchybar
 cask "spotify"
