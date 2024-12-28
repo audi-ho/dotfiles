@@ -1,6 +1,5 @@
-{ config, pkgs, lib, audi, ... }:
+{ pkgs, lib, audi, ... }:
 let
-  inherit (lib) mkOption types;
   inherit (audi) username homeDirectory;
 in {
   imports = [
@@ -11,7 +10,6 @@ in {
     ./neovim
     ./nnn.nix
     ./packages.nix
-    ./python.nix
     ./ranger
     ./scripts
     ./starship.nix

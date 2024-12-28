@@ -1,27 +1,20 @@
-{ self, pkgs, audi, ... }:
+{ pkgs, audi, ... }:
 let
   packages = with pkgs;
     [
-      black
-      cmake
+      chafa
       eza
       fd
-      fpp
       gh
       httpie
-      luajit
-      luarocks
-      ncurses
       neofetch
       jq
       nodejs
-      nix-prefetch-github
       nixfmt-classic
       ripgrep
-      rustup
-      stow
       tldr
       unzip
+      uv
       zoxide
     ];
 in { home = { inherit packages; }; }

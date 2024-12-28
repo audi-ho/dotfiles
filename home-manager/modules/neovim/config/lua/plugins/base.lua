@@ -1,11 +1,17 @@
 return {
 
   -- disable the following plugins because of perf
-  { "echasnovski/mini.indentscope", enabled = false },
-  { "lukas-reineke/indent-blankline.nvim", enabled = false },
-  { "RRethy/vim-illuminate", enabled = false },
-  { "nvim-lualine/lualine.nvim", enabled = false },
-  { "bufferline.nvim", enabled = false },
+  -- { "echasnovski/mini.indentscope", enabled = false },
+  -- { "nvim-lualine/lualine.nvim", enabled = false },
+  -- { "bufferline.nvim", enabled = false },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      indent = {
+        enabled = false,
+      },
+    },
+  },
 
   {
     "echasnovski/mini.surround",
@@ -20,6 +26,61 @@ return {
         update_n_lines = "",
       },
     },
+  },
+
+  {
+    "yashguptaz/calvera-dark.nvim",
+    lazy = false,
+    name = "calvera",
+    init = function()
+      vim.g.calvera_contrast = true
+      vim.g.calvera_italic_comments = true
+      vim.g.calvera_italic_keywords = true
+      vim.g.calvera_italic_functions = true
+      vim.g.calvera_italic_variables = false
+    end,
+    config = function()
+      vim.cmd.colorscheme("calvera")
+    end,
+  },
+
+  {
+    "maxmx03/fluoromachine.nvim",
+    lazy = false,
+    priority = 1000,
+    name = "fluoromachine",
+    config = function()
+      local fm = require("fluoromachine")
+
+      fm.setup({
+        glow = true,
+        theme = "fluoromachine",
+        transparent = true,
+      })
+
+      -- vim.cmd.colorscheme("fluoromachine")
+    end,
+  },
+
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    config = function()
+      -- vim.cmd.colorscheme("rose-pine")
+    end,
+  },
+
+  {
+    "tiagovla/tokyodark.nvim",
+    name = "tokyodark",
+    opts = {
+      -- custom options here
+    },
+    config = function(_, opts)
+      require("tokyodark").setup(opts) -- calling setup is optional
+      -- vim.cmd.colorscheme("tokyodark")
+    end,
   },
 
   {
@@ -63,7 +124,7 @@ return {
       },
     },
     config = function()
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
 
@@ -86,6 +147,24 @@ return {
   },
 
   {
+    "Wansmer/treesj",
+    keys = {
+      {
+        "J",
+        "<cmd>TSJToggle<cr>",
+        desc = "Join toggle",
+      },
+    },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    }, -- if you install parsers with `nvim-treesitter`
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 150,
+    },
+  },
+
+  {
     "stevearc/oil.nvim",
     opts = {
       keymaps = {
@@ -99,5 +178,50 @@ return {
     },
     keys = { { "-", "<cmd>Oil<cr>", desc = "Open oil" } },
     dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        sections = {
+          -- {
+          --   section = "terminal",
+          --   cmd = "chafa ~/Downloads/5600-makima-evil-pfpsgg.png --format symbols --symbols vhalf --size 60x17; sleep .1",
+          --   height = 17,
+          --   padding = 1,
+          -- },
+          {
+            {
+              section = "header",
+              padding = 1,
+            },
+          },
+          {
+            pane = 2,
+            { section = "keys", gap = 1, padding = 1 },
+            { section = "startup" },
+          },
+        },
+        preset = {
+          header = [[
+        ⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀
+     ⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷
+    ⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿
+   ⣾⣿⡟⣾⡸⢠⡿⢳⡿⠍⣼⣿⢏⣿⣷⢄⡀⠄⢠⣾⢻⣿⣸⣿⣿⣿⣿⣿⣿⣿
+ ⣡⣿⣿⡟⡼⡁⠁⣰⠂⡾⠉⢨⣿⠃⣿⡿⠍⣾⣟⢤⣿⢇⣿⢇⣿⣿⢿⣿⣿⣿⣿⣿
+⣱⣿⣿⡟⡐⣰⣧⡷⣿⣴⣧⣤⣼⣯⢸⡿⠁⣰⠟⢀⣼⠏⣲⠏⢸⣿⡟⣿⣿⣿⣿⣿⣿
+⣿⣿⡟⠁⠄⠟⣁⠄⢡⣿⣿⣿⣿⣿⣿⣦⣼⢟⢀⡼⠃⡹⠃⡀⢸⡿⢸⣿⣿⣿⣿⣿⡟
+⣿⣿⠃⠄⢀⣾⠋⠓⢰⣿⣿⣿⣿⣿⣿⠿⣿⣿⣾⣅⢔⣕⡇⡇⡼⢁⣿⣿⣿⣿⣿⣿⢣
+⣿⡟⠄⠄⣾⣇⠷⣢⣿⣿⣿⣿⣿⣿⣿⣭⣀⡈⠙⢿⣿⣿⡇⡧⢁⣾⣿⣿⣿⣿⣿⢏⣾
+⣿⡇⠄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢻⠇⠄⠄⢿⣿⡇⢡⣾⣿⣿⣿⣿⣿⣏⣼⣿
+⣿⣷⢰⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⢰⣧⣀⡄⢀⠘⡿⣰⣿⣿⣿⣿⣿⣿⠟⣼⣿⣿
+⢹⣿⢸⣿⣿⠟⠻⢿⣿⣿⣿⣿⣿⣿⣿⣶⣭⣉⣤⣿⢈⣼⣿⣿⣿⣿⣿⣿⠏⣾⣹⣿⣿
+⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿
+  ⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋  ⣾⡌⢠⣿⡿⠃
+⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉            ]],
+        },
+      },
+    },
   },
 }
